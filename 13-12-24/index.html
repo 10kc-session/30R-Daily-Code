@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Tag</title>
+</head>
+
+<body>
+    <!-- <form method="get" action="./response.html" autocomplete="off">
+        <fieldset>
+            <legend>User Details</legend>
+            <label for="username">Username</label> <br>
+            <input type="text" name="username" id="username"><br>
+            <label for="password">Password</label> <br>
+            <input type="password" name="password" id="password"><br>
+            <input type="submit" value="Sign in">
+        </fieldset>
+    </form>
+    <hr>
+    <form action="./response.html" autocomplete="off">
+        <input type="text" placeholder="Email address or phone number" name="user">
+        <br>
+        <input type="password" placeholder="Password" name="pass">
+        <br>
+        <input type="submit" value="Log in">
+    </form> -->
+
+    <form action="./response.html" method="get" autocomplete="off">
+        <label for="username">Username</label> <br>
+        <input type="text" id="username" name="username" maxlength="20" minlength="6" autofocus required> <br>
+        <label for="password">Password</label><br>
+        <input type="password" id="password" name="password" required> <br>
+        <label for="cnfrpassword">Confirm Password</label> <br>
+        <input type="password" id="cnfrpassword" name="cnfrpassword" required> <br>
+        <label for="mail">Email</label> <br>
+        <input type="email" id="mail" name="mail" required> <br>
+        <label for="phone">Phno</label> <br>
+        <input type="tel" id="phone" name="phone" required> <br>
+        <label for="">Gender</label>
+        <input type="radio" id="female" name="gender" value="Female" required> <label for="female">Female</label>
+        <input type="radio" id="male" name="gender" value="Male" required> <label for="male">Male</label>
+        <br>
+        <input type="checkbox" id="checkbox" name="checkbox" required>
+        <label for="checkbox">I agree to terms and conditions</label>
+        <br>
+        <input type="submit" value="Register">
+    </form>
+
+
+
+
+
+</body>
+
+</html>
