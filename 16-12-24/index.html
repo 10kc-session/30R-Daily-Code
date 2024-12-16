@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validations</title>
+</head>
+
+<body>
+    <!-- Single Characters -->
+    <!-- <form action="./response.html" autocomplete="off">
+        <input type="text" placeholder="enter otp" minlength="4" maxlength="4" required name="otp" pattern="1234"
+            title="enter below otp">
+        <br>
+        <input type="text" placeholder="username" required pattern="john" name="username" title="please enter john">
+        <br>
+        <input type="text" placeholder="firstname" required name="firstname" pattern="[abc]"
+            title="only small letters are accepted [a,b,c]">
+
+        <br>
+        <input type="text" placeholder="lastname" required name="lastname" pattern="[a-z]"
+            title="only small letters are accepted between a - z">
+        <br>
+
+        <input type="text" placeholder="capital letters" required name="caps" pattern="[A-Z]"
+            title="only capital letters are accepted between A-Z">
+
+        <br>
+
+        <input type="text" placeholder="only numbers" required name="nums" pattern="[0-9]"
+            title="only numbers are accepted">
+
+        <br>
+
+        <input type="text" placeholder="numbers and text" required name="n&t" pattern="[a-z0-9]"
+            title="any one character or digit">
+        <br>
+
+        <input type="text" placeholder="caps number small" required name="xyz" pattern="[a-zA-Z0-9]"
+            title="number , small and caps">
+        <h2>Your Otp is 1234</h2>
+        <input type="submit" value="login">
+    </form> -->
+
+    <!-- Multiple Characters -->
+    <form action="./response.html" autocomplete="off">
+        <!-- <input type="text" placeholder="Multiple small letters" required name="small" pattern="[abc]+"
+            title="Multiple characters from a b c">
+        <br>
+        <input type="text" placeholder="Multiple small letters" required name="small" pattern="[a-z]+"
+            title="Multiple characters b-w a-z">
+        <br>
+        <input type="text" placeholder="Multiple caps letters" required name="small" pattern="[A-Z]+"
+            title="Multiple characters b-w A-Z">
+        <br> -->
+        <!-- {minvalue , maxvalue} -->
+        <!-- <input type="text" placeholder="Multiple Numbers" required name="small" pattern="[0-9]{10}"
+            title="length should be 10">
+        <br> -->
+        <!-- <input type="text" name="all" placeholder="all letters except symbols and spaces" required
+            pattern="[a-zA-Z0-9\s]+">
+        <br>
+        <input type="text" placeholder="all characters" pattern="[a-zA-Z\d\s!@#$%^&*]+"
+            title="all characters are accepted">
+        <br> -->
+        <h3>Phone Number Validation</h3>
+        <input type="text" placeholder="Enter Mobile Number" required title="+91 is required" pattern="\+91[6789]\d{9}"
+            name="number">
+        <!-- \+ -> + -->
+        <br>
+        <input type="text" placeholder="any character" required name="any" pattern=".{1,}" title="minlength is 1">
+        <br>
+        <input type="submit" value="Login">
+    </form>
+</body>
+
+</html>
