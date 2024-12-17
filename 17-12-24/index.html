@@ -8,17 +8,12 @@
 </head>
 
 <body>
-    <form action="./response.html" enctype="multipart/form-data">
-        <input type="file" name="file" accept=".pdf,.docx" multiple>
+    <form action="./response.html" autocomplete="off">
+        <input type="text" pattern="[a-z0-9_.]+@gmail\.com" required name="email" placeholder="email">
         <br>
-        <textarea name="address" id="" rows="10" cols="10"></textarea>
+        <input type="text" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^]).{8,16}" placeholder="password"
+            title="only small and caps , lenght 8 to 16" required>
         <br>
-        <select name="city" id="">
-            <option value="" disabled selected>----Select----</option>
-            <option value="Hyderabad">Hyderabad</option>
-            <option value="Chennai">Chennai</option>
-            <option value="Mumbai">Mumbai</option>
-        </select>
         <input type="submit">
     </form>
 </body>
