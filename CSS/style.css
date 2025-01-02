@@ -1,27 +1,27 @@
-.container {
-    width: 80%;
-    /* height: 450px; */
-    /* border: 2px solid black; */
+.grand-container {
+    width: 700px;
+    height: 700px;
+    border: 2px solid purple;
     padding: 10px;
-    margin-left: 120px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
 }
 
-.item-1,
-.item-2,
-.item-3,
-.item-4 {
-    width: 290px;
-    /* height: 450px; */
-    /* border: 2px solid red; */
-    display: inline-block;
-    margin-right: 10px;
+.container {
+    width: 500px;
+    height: 500px;
+    border: 2px solid red;
+    padding: 10px;
+    position: absolute;
+    bottom: 0px;
 }
 
-img {
-    width: 100%;
-}
-
-h3,
-p {
-    margin-left: 10px;
+.item {
+    width: 200px;
+    height: 200px;
+    border: 2px solid black;
+    position: relative;
+    top: 10px;
+    right: 10px;
 }
