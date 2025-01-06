@@ -1,19 +1,49 @@
-/* 
-    .container .sub-container > p
-    .container > .sub-container > p
-    -------------------------------
-    .container .sub-container + p
-    .container>.sub-container + p
-    .container .sub-container ~ p
-    .container> .sub-container ~ p
+.item-1 {
+    background-color: lightblue;
+}
 
-    .sub-container > span > p
-    .sub-container span p
-    .sub-container > span p
-    .sub-container span > p
+.item-2 {
+    background-color: lightcoral;
+}
 
-    .container + div > p
-    .container ~ div p
-    .container + div p
-    .container ~ div > p
-*/
+.item-3 {
+    background-color: lightgreen;
+}
+
+.item-4 {
+    background-color: lightsalmon;
+}
+
+.item-5 {
+    background-color: lightslategray;
+}
+
+.item-6 {
+    background-color: lightsteelblue;
+}
+
+.item-7 {
+    background-color: lightseagreen;
+}
+
+.item {
+    padding: 10px;
+    font-size: 32px;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    border: 4px solid;
+    padding: 10px;
+    gap: 10px;
+    /* justify-content: space-between; */
+    height: 600px;
+    /* align-items: start; */
+    /* flex-direction: row; */
+    /* flex-wrap: wrap; */
+    flex-flow: column-reverse wrap-reverse;
+    align-items: start;
+    align-content: center;
+    justify-content: space-between;
+}
