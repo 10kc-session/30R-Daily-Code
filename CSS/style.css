@@ -1,18 +1,26 @@
 .container {
-    display: none;
+    display: flex;
     flex-direction: column;
     gap: 16px;
     padding: 10px;
     background-color: #ccc;
     width: fit-content;
+    position: absolute;
+    top: -100%;
+    z-index: 999;
+    transition: 0.6s ease;
 }
 
 #checkbox:checked+.container {
-    display: flex;
+    top: 8%;
 }
 
 label {
     font-size: 32px;
+}
+
+#checkbox {
+    display: none;
 }
 
 .container>span {
