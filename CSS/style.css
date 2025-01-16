@@ -1,37 +1,158 @@
-.container {
-    background-color: #ccc;
-    width: 0%;
-    height: fit-content;
-    overflow: hidden;
-    transition: 0.5s ease;
-    position: absolute;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inconsolata", serif;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+:root {
+    --text-color: #fff;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background-color: #000;
+    color: var(--text-color);
+    padding: 8px;
+    display: flex;
     z-index: 999;
 }
 
-#checkbox:checked+.container {
-    width: 80px;
-}
-
-label {
-    font-size: 32px;
-}
-
-.container>div {
-    margin: 8px;
-    border-bottom: 1px solid #fff;
-    white-space: nowrap;
-}
-
-
-#checkbox {
-    display: none;
-}
-
-.container>span {
-    border-bottom: 1px solid #eee;
+header>nav {
+    color: var(--text-color);
+    flex: 1;
+    text-align: center;
+    padding: 10px;
     cursor: pointer;
 }
 
-span:hover {
-    color: wheat;
+nav:hover {
+    background-color: #ccc;
+    color: #000;
+}
+
+.bg-container {
+    background-image: url('https://www.w3schools.com/w3images/coffeehouse.jpg');
+    min-height: 75%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+}
+
+.text-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--text-color);
+    font-size: 90px;
+    text-align: center;
+    line-height: 130px;
+}
+
+.text-container-2 {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    bottom: 0px;
+    color: var(--text-color);
+    padding: 10px;
+}
+
+.text-container-2 span:first-child {
+    background-color: #000;
+    padding: 4px;
+}
+
+.span-container {
+    padding: 80px;
+    text-align: center;
+}
+
+.span-container>span {
+    display: inline-block;
+    padding: 6px;
+    background-color: #000;
+    color: var(--text-color);
+    letter-spacing: 4px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+main>* {
+    width: 700px;
+    line-height: 30px;
+}
+
+.main-text-container-1 {
+    text-align: justify;
+}
+
+.main-text-container-1>p:first-child {
+    margin-bottom: 20px;
+}
+
+.main-text-container-2 {
+    background-color: #eee;
+    padding: 10px;
+    text-align: justify;
+    margin-top: 20px;
+    border-left: 4px solid #ccc;
+}
+
+.main-text-container-2>p:first-child {
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.main-check img {
+    width: 100%;
+    object-fit: cover;
+    height: 500px;
+    display: none;
+}
+
+#eat:checked~.cat1,
+#drink:checked~.cat2 {
+    display: block;
+}
+
+.main-check input {
+    display: none;
+}
+
+.label-container {
+    background-color: #eee;
+    margin: 8px 0px;
+}
+
+.label-container>label {
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+    padding: 6px;
+}
+
+#eat:checked~.one {
+    background-color: #585858;
+    color: white;
+}
+
+#drink:checked~.two {
+    background-color: #585858;
+    color: white;
 }
