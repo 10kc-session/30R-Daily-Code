@@ -1,165 +1,37 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Inconsolata", serif;
+.container {
+    width: 300px;
+    height: 300px;
+    background-color: yellow;
 }
 
-html,
-body {
-    height: 100%;
+/* max-width : 500px -> width <= 500px */
+@media screen and (max-width : 500px) {
+    .container {
+        background-color: red;
+    }
 }
 
-:root {
-    --text-color: #fff;
+/* width >= 700px and width <= 850px */
+/* @media screen and (min-width : 700px) and (max-width : 850px) {
+    .container {
+        background-color: gold;
+    }
+} */
+@media screen and (width >=700px) and (width <=850px) {
+    .container {
+        border: 4px solid;
+    }
 }
 
-header {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    background-color: #000;
-    color: var(--text-color);
-    padding: 8px;
-    display: flex;
-    z-index: 999;
+/* min-width : 900px -> width >= 900px */
+@media screen and (min-width : 900px) {
+    .container {
+        background-color: purple;
+    }
 }
 
-header>nav {
-    color: var(--text-color);
-    flex: 1;
-    text-align: center;
-    padding: 10px;
-    cursor: pointer;
-}
-
-nav:hover {
-    background-color: #ccc;
-    color: #000;
-}
-
-.bg-container {
-    background-image: url('https://www.w3schools.com/w3images/coffeehouse.jpg');
-    min-height: 75%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    position: relative;
-}
-
-.text-container {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    color: var(--text-color);
-    font-size: 90px;
-    text-align: center;
-    line-height: 130px;
-}
-
-.text-container-2 {
-    position: absolute;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    bottom: 0px;
-    color: var(--text-color);
-    padding: 10px;
-}
-
-.text-container-2 span:first-child {
-    background-color: #000;
-    padding: 4px;
-}
-
-.span-container {
-    padding: 80px;
-    text-align: center;
-}
-
-.span-container>span {
-    display: inline-block;
-    padding: 6px;
-    background-color: #000;
-    color: var(--text-color);
-    letter-spacing: 4px;
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 1.2rem;
-    gap: 10px;
-}
-
-main>* {
-    width: 700px;
-    line-height: 30px;
-}
-
-.main-text-container-1 {
-    text-align: justify;
-}
-
-.main-text-container-1>p:first-child {
-    margin-bottom: 20px;
-}
-
-.main-text-container-2 {
-    background-color: #eee;
-    padding: 10px;
-    text-align: justify;
-    margin-top: 20px;
-    border-left: 4px solid #ccc;
-}
-
-.main-text-container-2>p:first-child {
-    font-style: italic;
-    margin-bottom: 20px;
-}
-
-.image-container>img {
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
-}
-
-.label-container {
-    display: flex;
-    padding: 4px;
-    box-shadow: 0px 0px 5px 1px #eee;
-}
-
-.image-container {
-    margin-top: 10px;
-    padding: 10px;
-    box-shadow: 0px 0px 5px 1px #eee;
-}
-
-.label-container>label {
-    flex: 1;
-    text-align: center;
-    padding: 4px;
-    cursor: pointer;
-}
-
-.image-container>img {
-    display: none;
-}
-
-#eat:checked~.image-container>.image-1,
-#drink:checked~.image-container>.image-2 {
-    display: block;
-}
-
-.menu-section>input {
-    display: none;
-}
-
-#eat:checked~.label-container>#label-1,
-#drink:checked~.label-container>#label-2 {
-    background-color: #797979;
-    color: var(--text-color);
+@media screen and (min-width : 1200px) {
+    .container {
+        background-color: pink;
+    }
 }
