@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="./response.html" autocomplete="off">
+        <select name="Dishes" id="">
+            <optgroup label="Veg Section">
+                <option value="Veg">Veg Biryani</option>
+                <option value="Veg">Paneer Biryani</option>
+                <option value="Fried">Veg Fried Rice</option>
+            </optgroup>
+            <optgroup label="NV Section">
+                <option value="NV">NV Biryani</option>
+                <option value="Fried Rice">NV Fried Rice</option>
+            </optgroup>
+        </select>
+        <label for="car">Cars</label>
+        <input list="cars" id="car" name="model">
+        <datalist id="cars">
+            <option value="Volkswagen">
+            <option value="BMW">
+            <option value="Audi">
+            <option value="Rolls Royce">
+            <option value="Ferrari">
+        </datalist>
+
+        <input type="checkbox" name="data" value="on" checked disabled>
+        <input type="text" name="name" value="Suraj" readonly autofocus>
+
+        <input type="number" min="1" max="10">
+        <input type="submit">
+    </form>
+</body>
+
+</html>

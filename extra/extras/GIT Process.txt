@@ -1,0 +1,98 @@
+Collabe without merge conflict
+--------------------------------------
+hyder
+-----
+written code
+init
+remote add
+add
+commit
+push
+
+banglore
+--------
+git clone url
+ls
+cd reponame
+modify
+add
+commit
+push
+contact hyderabad
+
+hyderabad
+---------
+git pull origin main 
+-------------------------------------------------------------------------------------
+
+Collab with merge conflict
+--------------------------
+
+hyder
+-----
+written code
+init
+remote add
+add
+commit
+push
+
+banglore
+--------
+git clone url
+ls
+cd reponame
+modify
+add
+commit
+push
+no contact with hyder
+
+hyder
+------
+modified same line code and add more line codes 
+add 
+commit
+push ->  rejected
+git fetch (optional)
+git log --all (optional)
+git pull origin main
+merge conflict is raised , resolve it and file is modified
+add
+commit 
+push 
+success
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

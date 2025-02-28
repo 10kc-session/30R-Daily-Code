@@ -1,0 +1,50 @@
+<section class="main-check">
+            <div class="label-container">
+                <input type="radio" name="x" id="eat" checked>
+                <input type="radio" name="x" id="drink">
+                <label for="eat" class="one">EAT</label>
+                <label for="drink" class="two">DRINK</label>
+                <img src="../cat.png" alt="" class="cat1">
+                <img src="../cat2.jpg" alt="" class="cat2">
+            </div>
+        </section>
+
+---------------------------------
+
+.main-check img {
+    width: 100%;
+    object-fit: cover;
+    height: 500px;
+    display: none;
+}
+
+#eat:checked~.cat1,
+#drink:checked~.cat2 {
+    display: block;
+}
+
+.main-check input {
+    display: none;
+}
+
+.label-container {
+    background-color: #eee;
+    margin: 8px 0px;
+}
+
+.label-container>label {
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+    padding: 6px;
+}
+
+#eat:checked~.one {
+    background-color: #585858;
+    color: white;
+}
+
+#drink:checked~.two {
+    background-color: #585858;
+    color: white;
+}
