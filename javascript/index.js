@@ -1,150 +1,166 @@
 /**
- *  Conditional Statements
- *  -----------------------
- *      simple if
- *          -->         if(condition){
- *                          // Statements
- *                      }
- *                  if condition is true ,then statements will be executed
- *                  if condition is false , then statements will not executed 
- *      if else
- *          ->     if(condition){
- *                      // true statements
- *                  }
- *                  else{
- *                      // false statements
- *                  }
- *          if condition is true then it is going to execute if block , or it directly going to else
- *      ladder if
- *              if(condition){
- *                    /// statements
- *              }else if(condition){
- *                     // stat
- *              }else{ 
- *                  // state
- *              }
- *      nested if
- *      switch case
+ *  Loops in Javascript
+ *  -------------------
+ *      Loops are used to execute block of code multiple times untill the condition 
+ *      satisfies
+ *      types of loops
+ *      -------------
+ *      for loop , while loop , do while , for in , for off
  */
-var flag = true;
-if (flag) {
-    console.log("Hello World");
-}
-// ! -> not 
-if (!flag) {
-    console.log("Hello There");
-}
 
-if (flag == !false) {
-    console.log("Statement Executed");
-}
-// if age is less than 18 -> then log -> Not Eligible 
-var age = 18;
-if (age < 18) {
-    console.log("Not Eligigble");
-}
-if (age >= 18) {
-    console.log("Eligible");
-}
+// unary operator in js
+/**
+ *  ++ -> increment  -> post increment , pre increment -> +1 
+ *  -- -> decrement  -> post decrement , pre decrement -> -1
+ */
+var a = 10; // 11
+// a++;  // post increment a = a + 1;
+console.log(a++); // first accessing the value and later increment value  -> 10
+// a = a + 1; -> 11
+console.log(a);
+console.log("--------------------");
+var b = 20; // 21
+// ++b; // pre increment first update the value b = b + 1 -> b = 20 + 1 -> 21 later access
+console.log(++b);
+console.log(b);
 
-if (age < 18) {
-    console.log("! Eligible");
-} else {
-    console.log("Eligible");
-}
+var c = 10; // 11
+//           10 + 11
+console.log(c++ + c); // 21
+console.log(c); // 11
 
-// age > 18 and age should be below 65 -> eligible -> without and operator
+console.log("-----------");
+console.clear();
+var d = 35; // 37
+//           35 + 36
+console.log(d++ + d++); // 71
+console.log(d); // 37
 
-age = 70;
-if (age < 18) {
-    console.log("!");
-} else {
-    if (age < 65) {
-        console.log("Eligible");
-    } else {
-        console.log("!");
-    }
-}
-
-// age > 18 and age < 65 -> if age is 0 or negative show invalid age
-age = 90;
-if (age <= 0) {
-    console.log("Invalid age");
-} else {
-    if (age >= 18) {
-        if (age < 65) {
-            console.log("Eligible");
-        } else {
-            console.log("Not eligible");
-        }
-    } else {
-        console.log("Not eligible");
-    }
-}
-
-var gender = "xyz";
-if (gender == "male") {
-    console.log("Male");
-}
-else if (gender == "female") {
-    console.log("Female");
-}
-else if (gender == "others") {
-    console.log("Others");
-} else {
-    console.log("Invalid Gender");
-}
+d = 4;
+console.log(d++ + ++d);
+console.log(++d + d++ - d);
 
 /**
- *  write a js program where define a named function checkNationality with single 
- *  parameter , this is going to validate the parameter if it is indian or not 
- * checkNationality(name) -> name -> indian -> He/She is Indian
- *  -> HE/SHE is from different country
+ *   for loop
+ *  -----------
+ *      Syn : 
+ *              for identifier in range(start , end , step):
+ *                  // statements
  * 
- * 
- * write a function which returns largest number by adding 10 
- *  function name -> getLargest
- *  parameters -> num1 , num2
- * 
- *  write a function which takes three parameters (num1 , num2 , callback) -> getData()
- *  pass three arguments to getData function 
- *      num1 - 20 
- *      num2 - 40 
- *      callback -> arrow fun(num1 , num2)
- * call the callback function , this function will return smallest number to the getData
- * and getData return smallest by adding 20;
+ *              for(initilization;condition;updation){
+ *                      // statements
+ *              }
+ *              initilization -> baby born 
+ *              condition     -> is alive or not 
+ *              updation      -> birthday 
+ 
+ * First Loop -> initilization and condition
+ * Second loop to end -> updation and condition
  */
-function getData(num1, num2, callback) {
-    return callback(num1, num2) + 20;
+for (var a = 1; a <= 5; a = a + 1) {
+    console.log(a);
 }
-var result = getData(20, 40, (num1, num2) => {
-    if (num1 < num2) {
-        return num1;
-    }
-    return num2;
-})
-console.log(result);
 
-
-
-
-
-function getLargestNum(num1, num2) {
-    if (num1 > num2) {
-        return num1 + 10;
-    }
-    return num2 + 10;
+for (var a = 1; a <= 100; a++) {
+    console.log(a);
 }
-console.log(getLargestNum(10, 40));
 
+//  i = i + 2
+for (var i = 1; i <= 14; i += 2) {
+    console.log(i);
+}
 
-function checkNationality(name) {
-    if (name == "Indian") {
-        console.log("HE/SHE is indian");
-    }
-    else {
-        console.log("HE/SHE is from different company")
+for (var i = 0; i % 2 == 0; i++) {
+    console.log(i);
+}
+
+for (var i = 0; i % 2; i++) {
+    console.log(i);
+}
+
+for (var i = 1; i < 6; i++) {
+    console.log(i % 3); // 1 2 0 1 2
+}
+/**
+ * Write a function which takes a single parameter from 1 to n , and prints the table
+ * of the parameter value upto 10
+ *  function name -> printTable
+ *  parameter -> num 
+ *  input -> 2
+ *    output 2 table -> 2 * 1 = 2
+ *                      2 * 2 = 4
+ */
+
+function printTable(num) {
+    for (var i = 1; i <= 10; i++) {
+        console.log(`${num} * ${i} = ${num * i}`);
     }
 }
-checkNationality("Indian")
-checkNationality("others")
+console.clear();
+printTable(2);
+
+//-----------------------------------------------
+
+/**
+ * prime -> 1 to n
+ *  -> it should divisible by one
+ *  -> and itself
+ */
+console.clear();
+var num = 3;
+console.log(num % 1);
+console.log(num % 3);
+
+num = 6;
+console.log(num % 1);
+console.log(num % 6);
+console.log(num % 2);
+console.log(num % 3);
+
+num = 100;
+
+num = 7;
+console.log(num % 1);
+console.log(num % 7);
+
+// 5
+// 1 itself -> 2
+// 1 -> x  ifself -> X
+//  1 2 3 4 5 6 7 -> 3.5 -> 3
+//  1 2 3 4 5 6
+//   9
+//  1 2 3 4 5 6 7 8 9 10 / 20
+console.clear();
+//               100
+function isPrime(num) {
+    if (num == 1)
+        return false;
+    //   i = 2 ; i <= 50
+    for (var i = 2; i <= Math.floor(num / 2); i++) {
+        if (num % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+if (isPrime(100)) {
+    console.log("Is Prime Number");
+} else {
+    console.log("! Prime");
+}
+
+var num = 100;
+var count = 0; // 3
+for (var i = 1; i <= num; i++) {
+    if (num % i == 0) {
+        count++;
+    }
+    if (count > 2) {
+        break;
+    }
+}
+if (count == 2) {
+    console.log("Prime Number");
+} else {
+    console.log("!");
+}
