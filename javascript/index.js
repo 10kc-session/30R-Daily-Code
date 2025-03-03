@@ -132,6 +132,7 @@ console.log(num % 7);
 //  1 2 3 4 5 6 7 8 9 10 / 20
 console.clear();
 //               100
+//  2 to 50 
 function isPrime(num) {
     if (num == 1)
         return false;
@@ -151,6 +152,7 @@ if (isPrime(100)) {
 
 var num = 100;
 var count = 0; // 3
+// 1 to 100
 for (var i = 1; i <= num; i++) {
     if (num % i == 0) {
         count++;
