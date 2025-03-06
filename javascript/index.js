@@ -1,160 +1,298 @@
 /**
- *  Arrays in Javascript
- *  --------------------
- *      Arrays are non primitive datatypes or special type of object which can 
- *      heterogenous and homogenous values in a single variable 
- *      In javascript , for arrays there is no restriction on length
- *      The Values which we store arrays are known as elements
- *      To find lenght of array , we can use length property
- *      In Javascript array index starts from 0
- *      In Array elements are seperated by , and array is represented in []
- *      Arrays are in form of continous memory allocation
- *      There are two ways to create objects 
- *      -------------------------------------
- *          1. using literal (Recommended Way)
- *              Syn : 
- *                      varaiable refVar = [];
- *          2. using constructor 
- *              Syn : 
- *                      variable refVar = new Array();
- *      Curd operations
- *      ----------------
- *       create ,               update ,                read  ,                 delete
- *       inserting the elements    modifying the elements     Accessing the elements      delete the elements
+ *  Objects in Javascript
+ *  ---------------------
+ *     Objects are collection of key value pairs , where keys can be string or symbol
+ *     In Object values can any type of datatype , but to access the values from object
+ *     we need a unique key.
+ *     There are three ways to create ways to create object
+ *     ------------------------------------------------------
+ *      1. literal objects (recommended)
+ *      2. using constructor
+ *      3. Object.create()
+ *     In javascript every datatype is an Object (prototype)
+ *     object are represented in {}.
+ *     key and value pairs are seperated by , (comma)
+ *     Syn : 
+ *             variable refVar = {}; 
+ *      variable refVar = {
+ *                          key : value , key : value , 
+ *                          key : value
+ *                      } 
+ *      how to access values from an object
+ *      -----------------------------------
+ *          1. refVar.keyName (dot notation)
  * 
- *      How to insert into an element into array
- *     -------------------------------------------
- *              varaible refVar = [];
- *              refVar[index] = value; // inserting the value 
- *              varaible refVar = [element1 , element2,.....elementN]; // inserting values
- *      
- *      varaiable identifier = refVar[index] // accessing the value
- *      
- *      refVar[alreadyAvailableIndex] = value; // updating the value
+ *          2. refVar["keyName"] (square notation)
+ *              (recommended)
  * 
- *      We cannot Delete Elements from array manually , but with the help of methods
- *      we can delete the elements
- *  
- *          refVar.pop(); // deletes the last element
- *          refVar.shift(); // deleted the first element
- *          refVar.splice(); // deletes elements from one position another position
+ *          3. Object.values(refVar)
+ * 
+ *  Note : if there is no key available in object
+ *          then it will return undefined
+ * // Update
+ *  objRef["alreadyAvailableKey"] = value;
+ *  objRef.alreadyAvailableKey = value;
+ * 
+ * // Addd
+ * 
+ * objRef["newKey"] = value;
+ * 
+ * // delete
+ * 
+ * delete objRef.alreadyAvailableKey
+ * 
+ * if we write duplicates keys in object then 
+ * previous value will be replaced with latest value
  */
 
-var arr = [];
-console.log(typeof arr); // object
 
-//  Inserting the values
-arr[0] = 10;
-arr[1] = 30;
-arr[2] = "Javascript";
-arr[3] = function () { console.log("Hello World") };
+var obj = {
+    "name": "Naresh",
+    "address": "Hyderabad",
+    "hno": 110,
+};
 
-console.log(arr.length); // 4
-console.log(arr); // [10 , 30 , "Javascript" , function]
+// Accessing the data
 
-// Accessing the values
+console.log(obj["1234"]); // undefined
 
-console.log(arr[3]);
-arr[3]();
+console.log(obj);
+console.log(obj.name);
+console.log(obj["name"]);
 
-console.log(arr[0] + arr[1]);
-arr[5] = arr[0] * 2; // inserting value into 5th index
+console.log(obj.address);
+console.log(obj["address"]);
 
-console.log(arr[4]);
-console.log(arr.length); // 6
+console.log(obj.hno);
+console.log(obj["hno"]);
 
-// how to access last element from array
-// given by suraj
+// update the data
+obj.name = "Naresh Nayak";
+obj["address"] = "Chennai";
+obj["hno"] = 12345
+console.log(obj);
 
-console.log(arr[arr.length - 1]); // last index
+// Add the data into object
 
+obj["phno"] = "1234567890";
+obj.email = "naresh@gmail.com"
 
 console.clear();
+console.log(obj);
 
-//     0   1    2    3      4      5        6
+console.table(obj);
 
-console.log(arr.length);
-console.log(arr);
-arr[0] = 45;
-console.log(arr);
 
-/**
- * for(init ; condition ; updation){
- *      // statements
- *  }
-*/
-console.clear();
+// deleting the data
 
-arr = [1, 'a', 'b', false, 0.0, 1.23455, function () { return "Hey There" }];
+delete obj.hno;
 
-for (var index = 0; index <= 6; index++) {
-    console.log(arr[index]);
+console.table(obj);
+console.log(obj.hno);
+
+delete obj["address"];
+console.table(obj);
+console.log(obj.address);
+
+// Adding Masala
+
+var obj2 = {
+    "empName": "Rajesh",
+    "empId": 1,
+    "empName": "Raghu"
 }
 
-console.log("-------------------------------");
+console.table(obj2);
 
-for (var index = 0; index <= arr.length - 1; index++) {
-    console.log(arr[index]);
+var obj3 = {
+    "studentName": "Satya",
+    "studentId": 101,
+    "studentAddress": {
+        "city": "Hyderabad",
+        "pincode": "500072",
+        "state": "TG",
+        "street": "KPHB colony road no 2"
+    }
 }
-
 console.clear();
+console.log(obj3);
+console.log(obj3.studentName);
+console.log(obj3.studentId);
+console.log(obj3.studentAddress);
+console.log(obj3.studentAddress.city);
+console.log(obj3.studentAddress.pincode);
+console.log(obj3.studentAddress.street);
 
-arr = [1, 2, 3, 4, 5, 6];
+var obj4 = {
+    "studentName": "suraji",
+    "studentImages": ["image1", "image2", "image3"],
+    "studentBikes": [
+        {
+            "name": "Pulsar",
+            "cc": "220",
+            "color": "black"
+        },
+        {
+            "name": "Yamaha r1",
+            "cc": "1000",
+            "color": "Blue"
+        },
+        {
+            "name": "Ns 250",
+            "cc": "250",
+            "color": "black"
+        }
+    ]
+}
+console.clear();
+console.log(obj4.studentName);
+console.log(obj4.studentImages);
 
-// returns elements
-for (var element of arr) {
+for (var element of obj4.studentImages) {
     console.log(element);
 }
 
-// returns indexes
-for (var index in arr) {
-    console.log(arr[index])
-}
+console.log(obj4.studentBikes);
 
-arr = [32, 4, 56, 732, 45, 23, 18, 81, "seventy seven"];
-
-for (var i = arr.length - 1; i >= 0; i--) {
-    console.log(arr[i]);
+for (var element of obj4.studentBikes) {
+    console.log(element.name);
+    console.log(element.cc);
+    console.log(element.color);
 }
 
 console.clear();
-
-arr = [5, 4, 3, 6, 7, 8, 9];
-console.log(arr);
-arr.pop();
-console.log(arr);
-arr.shift();
-console.log(arr); //[4, 3, 6, 7, 8]
-arr.splice(1, 3);
-console.log(arr);
-
-
-
 /**
- *      find even numbers from given array 
- *          o/p => even numbers
- *          arr = [6,4,7,8,9,32,3,4,5,5,43,2,12,3,4,5,67,8,987,65,43,2,234,56]
-*/
-arr = [6, 4, 7, 8, 9, 32, 3, 4, 5, 5, 43, 2, 12, 3, 4, 5, 67, 8, 987, 65, 43, 2, 234, 56]
-
-for (var element of arr) {
-    if (element % 2 == 0) {
-        console.log(element);
+ * obj5.results[0].gender
+ * obj5["results"][0]["gender"]
+ * 
+ * obj5.results[0].name.title
+ * obj5.results[0].name.first
+ * obj5.results[0].name.last
+ * 
+ * obj5.results[0].location.street.number
+ * obj5.results[0].location.cordinates.longitude
+ */
+var obj5 = {
+    "results": [
+        {
+            "gender": "male",
+            "name": {
+                "title": "Mr",
+                "first": "Yasnovid",
+                "last": "Okunevskiy"
+            },
+            "location": {
+                "street": {
+                    "number": 2787,
+                    "name": "Portova"
+                },
+                "city": "Gluhiv",
+                "state": "Chernivecka",
+                "country": "Ukraine",
+                "postcode": 60123,
+                "coordinates": {
+                    "latitude": "74.9486",
+                    "longitude": "-39.6168"
+                },
+                "timezone": {
+                    "offset": "-3:00",
+                    "description": "Brazil, Buenos Aires, Georgetown"
+                }
+            },
+            "email": "yasnovid.okunevskiy@example.com",
+            "login": {
+                "uuid": "f954b3f8-1cc8-47d6-94cd-0fe75ede21fa",
+                "username": "smallsnake119",
+                "password": "concord",
+                "salt": "eUVGEYAh",
+                "md5": "5785743b74ab50ba69f41c112737e0d3",
+                "sha1": "39eeaec887fe2a86becfd9aa82d42dd4d3a78fbf",
+                "sha256": "2e4554c1b82af2501e48ed0f043dfb84e78775c225cda6f7214860e13c483167"
+            },
+            "dob": {
+                "date": "1997-11-13T10:46:50.162Z",
+                "age": 27
+            },
+            "registered": {
+                "date": "2020-02-25T02:14:43.429Z",
+                "age": 5
+            },
+            "phone": "(068) Y89-1096",
+            "cell": "(096) P80-5385",
+            "id": {
+                "name": "",
+                "value": null
+            },
+            "picture": {
+                "large": "https://randomuser.me/api/portraits/men/43.jpg",
+                "medium": "https://randomuser.me/api/portraits/med/men/43.jpg",
+                "thumbnail": "https://randomuser.me/api/portraits/thumb/men/43.jpg"
+            },
+            "nat": "UA"
+        }
+    ],
+    "info": {
+        "seed": "a9f9ebca78ca6133",
+        "results": 1,
+        "page": 1,
+        "version": "1.4"
     }
 }
 
-for (var i = 0; i <= arr.length - 1; i++) {
-    if (arr[i] % 2 == 0) {
-        console.log(arr[i]);
+var obj6 = {
+    "studentName": "Satya",
+    "studentId": 101,
+    "studentAddress": {
+        "city": "Hyderabad",
+        "pincode": "500072",
+        "state": "TG",
+        "street": "KPHB colony road no 2"
     }
 }
 
-console.log("-------------------");
+// for (var key in obj6) {
+//     if (key != "studentAddress") {
+//         console.log(obj6[key]);
+//     } else {
+//         for (var addKey in obj6[key]) {
+//             console.log(obj6[key][addKey]);
+//         }
+//     }
+// }
 
-var i = 0;
-while (i < arr.length) {
-    if (arr[i] % 2 == 0)
-        console.log(arr[i]);
-    i++;
+// console.log(obj6);
+
+var obj6 = {
+    "studentName": "Satya",
+    "studentId": 101,
+    "studentAddress": {
+        "city": "Hyderabad",
+        "pincode": "500072",
+        "state": "TG",
+        "street": "KPHB colony road no 2"
+    }
 }
+// variable {keys present in object} = objectRef
+// Object Destructuring ES6
+var { studentName, studentId, studentAddress: { city, pincode, state } } = obj6;
+console.log(studentName, studentId);
+console.log(city, pincode, state);
 
+var obj7 = {
+    "hello": "hello there"
+}
+var obj8 = obj7; // shallow copy vs deep copy in javascript
+
+console.log(obj7);
+console.log(obj8);
+
+obj8.hello = "Hey There";
+
+console.log(obj7);
+console.log(obj8);
+
+var a = 10;
+var b = a;
+b = 40;
+
+console.log(a, b);
