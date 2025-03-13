@@ -1,0 +1,44 @@
+{
+    "students": [
+        {
+            "id": "1",
+            "name": "Rajesh",
+            "rollNo": 123
+        },
+        {
+            "id": "2",
+            "name": "Jeevan",
+            "rollNo": 456
+        },
+        {
+            "id": "3",
+            "name": "Madhavika",
+            "rollNo": 789
+        },
+        {
+            "id": "4",
+            "name": "Madhavika",
+            "rollNo": 987
+        },
+        {
+            "id": "5",
+            "name": "Gopal ch",
+            "rollNo": 678
+        },
+        {
+            "id": "6",
+            "name": "Sukreethi",
+            "rollNo": 454
+        },
+        {
+            "id": "7",
+            "name": "Pavani J",
+            "rollNo": 459
+        },
+        {
+            "id": "8",
+            "name": "Sharukh",
+            "rollNo": 999
+        }
+    ]
+}

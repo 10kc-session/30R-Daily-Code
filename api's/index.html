@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../extra/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <style>
+        p {
+            margin: 0 !important;
+        }
+
+        .item> :last-child {
+            text-align: end !important;
+        }
+
+        .item> :last-child::before {
+            content: "- ";
+        }
+
+        .item> :first-child {
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body class="d-flex align-items-center flex-column gap-3">
+    <div class="w-75 text-center">
+        <input type="text" placeholder="username" id="username" class="form-control p-2 m-2"> <br>
+        <input type="text" placeholder="message" id="message" class="form-control p-2 ms-2 mb-2"> <br>
+        <button class="btn btn-success" onclick="addData()">Add Message</button>
+    </div>
+    <div class="border border-2 border-danger rounded rounded-2 w-75 mb-2" id="container">
+    </div>
+    <script src="./index.js"></script>
+</body>
+
+</html>
