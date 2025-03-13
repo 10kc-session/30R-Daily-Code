@@ -5,32 +5,37 @@ function addData() {
 }
 
 function postData(username, message) {
-    var url = "https://insidious-receptive-supply.glitch.me/users";
-    var options = {
-        "method": "POST",
-        "headers": {
-            "Content-Type": "application/json"
-        },
-        "body": JSON.stringify({
-            "username": username.value,
-            "message": message.value
-        })
+    if (username.value == "" || message.value == "") {
+        alert("Add Username and Message");
     }
-    fetch(url, options)
-        .then(response => {
-            if (response.ok) {
-                // alert("Data added succesfully..");
-                console.log("Data Addded");
-                displayData();
-                alert("Data added successfully")
-                username.value = "";
-                message.value = "";
-            }
-        })
-        .catch(err => {
-            alert("Something fishy");
-            console.error(err);
-        })
+    else {
+        var url = "https://insidious-receptive-supply.glitch.me/users";
+        var options = {
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "body": JSON.stringify({
+                "username": username.value,
+                "message": message.value
+            })
+        }
+        fetch(url, options)
+            .then(response => {
+                if (response.ok) {
+                    // alert("Data added succesfully..");
+                    console.log("Data Addded");
+                    displayData();
+                    alert("Data added successfully")
+                    username.value = "";
+                    message.value = "";
+                }
+            })
+            .catch(err => {
+                alert("Something fishy");
+                console.error(err);
+            })
+    }
 }
 
 function displayData() {
