@@ -1,59 +1,108 @@
-// let table = document.createElement("table");
-// let trHead = document.createElement("tr");
-// let headings = ["sno", "name", "rollno"];
-
-// for (let heading of headings) {
-//     let th = document.createElement("th");
-//     th.innerText = heading;
-//     trHead.appendChild(th);
-// }
-
-// table.appendChild(trHead);
-
-// let data =
-//     [
-//         ["1", "Raju", "101"],
-//         ["2", "Rag", "102"],
-//         ["3", "Raghu", "103"],
-//         ["4", "Rages", "104"],
-//         ["5", "Rakesh", "105"]
-//     ];
-
-// for (let element of data) {
-//     let tr = document.createElement("tr");
-//     for (let item of element) {
-//         let td = document.createElement("td");
-//         td.innerText = item;
-//         tr.appendChild(td);
+/** 
+ *  Performing CURD operations using JSON and DOM
+ *  Array Method , Closures
+ */
+// let x = 10;
+// function x() {
+//     let a = 20;
+//     function y() {
+//         console.log(a, x);
 //     }
-//     table.appendChild(tr);
+//     return y;
 // }
 
-// document.body.appendChild(table);
-let container = document.createElement("div");
-container.className = 'container';
+// let res = x(); // y function defination
+// res();
 
-let loader = document.getElementById("loader");
-function fetchData() {
-    fetch("https://fakestoreapi.com/products")
+// function getMultiplication(num) {
+//     return function (val) {
+//         console.log(num * val);
+//     }
+// }
+
+// let multiple = getMultiplication(5);
+
+// multiple(2);
+// multiple(4);
+// multiple(7);
+// multiple(3);
+// multiple(8);
+
+// let arr = [1, 2, 3, 4, 5, 6];
+// while , do while , for , for in , for of
+
+// Iterative Methods in js -> forEach , map , filter
+
+// arr.forEach(element => console.log(element));
+
+let container = document.getElementById("container");
+let btn = document.getElementById("btn");
+// Click
+btn.addEventListener("click", function () {
+    let title = document.getElementById("title");
+    let price = document.getElementById("price");
+    let description = document.getElementById("description");
+    if (title.value == "" || price.value == "" || description.value == "") {
+        alert("Enter data properly");
+    }
+    else {
+        let options = {
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "body": JSON.stringify({
+                "title": title.value,
+                "price": price.value,
+                "description": description.value
+            })
+        }
+        fetch("https://branch-silver-narwhal.glitch.me/products", options)
+            .then(res => {
+                if (res.ok) {
+                    title.value = '';
+                    price.value = '';
+                    description.value = '';
+                    getData(); // mandatory
+                    alert("Data Added");
+                }
+            })
+    }
+})
+
+function getData() {
+    fetch("https://branch-silver-narwhal.glitch.me/products")
         .then(res => res.json())
-        .then(data => displayData(data))
-        .catch(err => console.error(err));
+        .then(data => displayData(data));
 }
 function displayData(products) {
-    for (let obj of products) {
+    container.innerHTML = ``; // mandatory
+    products.forEach(obj => {
         let item = document.createElement("div");
-        item.className = "item";
         item.innerHTML = `
-            <img src = '${obj.image}' class = 'image'>
-            <p class='text'>${obj.title} - <span> ${obj.price}</span></p>
-            <p class = 'description'>${obj.description}</p>
-            <p class='rating'>${obj.rating.rate}</p>
+            <p>${obj.title}</p>
+            <p>${obj.description}</p>
+            <button onclick = deleteData('${obj.id}')>Delete</button>
         `;
         container.appendChild(item);
-    }
-    loader.remove();
-    document.body.appendChild(container);
+    })
 }
 
-fetchData();
+function deleteData(id) {
+    console.log(id)
+    let options = {
+        "method": "DELETE"
+    }
+    fetch(`https://branch-silver-narwhal.glitch.me/products/${id}`, options)
+        .then(res => {
+            if (res.ok) {
+                getData(); // mandatory
+                alert("Data Deleted");
+            }
+        })
+        .catch(err => console.error(err));
+}
+
+getData();
+
+

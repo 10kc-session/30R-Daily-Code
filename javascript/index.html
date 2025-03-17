@@ -5,120 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- <style>
-        table {
-            width: 100%;
-            text-align: center;
-        }
-
-        table,
-        th,
-        tr,
-        td {
-            border: 2px solid;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            padding: 10px;
-            font-size: 2.5rem;
-        }
-    </style> -->
     <style>
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        .container>div {
+            border: 1px solid #ccc;
             padding: 10px;
-            gap: 10px;
+            margin: 4px;
+            font-size: large;
         }
 
-        .image {
-            width: 100%;
-            height: 250px;
-            object-fit: contain;
-            display: block;
-        }
-
-        .item {
+        .input {
             padding: 10px;
-            border: 1px solid #eee;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .rating {
-            position: absolute;
-            top: 0px;
-            right: 20px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            display: none;
-        }
-
-        .rating::after {
-            content: '⭐';
-        }
-
-        .item:hover .image {
-            transform: scale(1.1);
-            transition: 0.6s ease;
-        }
-
-        .item:hover .rating {
-            display: block;
-            transition: 0.5s ease;
-        }
-
-        .description {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .text {
-            font-weight: 600;
             text-align: center;
         }
 
-        .text>span {
-            color: #034C53;
-        }
-
-        .text>span::before {
-            content: '₹';
-        }
-
-        body {
-            position: relative;
-            min-height: 100vh;
-            margin: 0;
-        }
-
-        /* HTML: <div class="loader"></div> */
-        .loader {
-            width: 120px;
-            height: 20px;
-            -webkit-mask: linear-gradient(90deg, #000 70%, #0000 0) 0/20%;
-            background:
-                linear-gradient(#000 0 0) 0/0% no-repeat #ddd;
-            animation: l4 2s infinite steps(6);
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        @keyframes l4 {
-            100% {
-                background-size: 120%
-            }
+        .input>* {
+            padding: 10px;
         }
     </style>
 </head>
 
 <body>
-    <div class="loader" id="loader"></div>
+    <!--"id": "2",
+            "title": "Mens Casual Premium Slim Fit T-Shirts ",
+            "price": 22.3, -->
+    <div class="input">
+        <input type="text" id="title" placeholder="title">
+        <input type="text" id="price" placeholder="enter price">
+        <input type="text" id="description" placeholder="enter description">
+        <button id="btn">add data</button>
+    </div>
+    <div class="container" id="container"></div>
     <script src="./index.js"></script>
 </body>
 
