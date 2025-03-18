@@ -1,108 +1,166 @@
-/** 
- *  Performing CURD operations using JSON and DOM
- *  Array Method , Closures
+/**
+ *   Async and Await
+ *   ---------------
+ *      Callbacks
+ *      Callback hells
+ *      Promises  -> then chaining 
+ *    Concise -> Async and await
+ * then , catch , resolve , reject , all , any , allste , race , finally
  */
-// let x = 10;
-// function x() {
-//     let a = 20;
-//     function y() {
-//         console.log(a, x);
-//     }
-//     return y;
+// function get() {
+//     let promise = Promise.resolve("Hello World")
+//     promise.then(res => console.log(res));
+//     console.log("Function Data");
+// }
+// get();
+// console.log("Hey World");
+
+/**
+ * async function functionName(){
+ *      
+ * }
+ * let refVar = async function(){
+ *      
+ * }
+ * let refVar = async () => {
+ *      
+ * }
+ * will return promise object 
+ */
+
+// function getData() {
+//     return Promise.resolve("Hello world");
 // }
 
-// let res = x(); // y function defination
-// res();
+// getData().then(res => console.log(res));
 
-// function getMultiplication(num) {
-//     return function (val) {
-//         console.log(num * val);
-//     }
-// }
-
-// let multiple = getMultiplication(5);
-
-// multiple(2);
-// multiple(4);
-// multiple(7);
-// multiple(3);
-// multiple(8);
-
-// let arr = [1, 2, 3, 4, 5, 6];
-// while , do while , for , for in , for of
-
-// Iterative Methods in js -> forEach , map , filter
-
-// arr.forEach(element => console.log(element));
-
-let container = document.getElementById("container");
-let btn = document.getElementById("btn");
-// Click
-btn.addEventListener("click", function () {
-    let title = document.getElementById("title");
-    let price = document.getElementById("price");
-    let description = document.getElementById("description");
-    if (title.value == "" || price.value == "" || description.value == "") {
-        alert("Enter data properly");
-    }
-    else {
-        let options = {
-            "method": "POST",
-            "headers": {
-                "Content-Type": "application/json"
-            },
-            "body": JSON.stringify({
-                "title": title.value,
-                "price": price.value,
-                "description": description.value
-            })
-        }
-        fetch("https://branch-silver-narwhal.glitch.me/products", options)
-            .then(res => {
-                if (res.ok) {
-                    title.value = '';
-                    price.value = '';
-                    description.value = '';
-                    getData(); // mandatory
-                    alert("Data Added");
-                }
-            })
-    }
-})
-
-function getData() {
-    fetch("https://branch-silver-narwhal.glitch.me/products")
-        .then(res => res.json())
-        .then(data => displayData(data));
+async function getData() {
+    return "Hello world"; // wrapping into promise object 
 }
-function displayData(products) {
-    container.innerHTML = ``; // mandatory
-    products.forEach(obj => {
-        let item = document.createElement("div");
-        item.innerHTML = `
-            <p>${obj.title}</p>
-            <p>${obj.description}</p>
-            <button onclick = deleteData('${obj.id}')>Delete</button>
-        `;
-        container.appendChild(item);
+
+getData().then(res => console.log(res));
+
+/**
+ * Async keyword is used to make function as asynchronous and it implictily 
+ * returns a promise object
+ *  
+ * Await keyword can be used in only async function and modules , await is going 
+ * block below statements until a promise is resolve or rejected
+ * 
+ * if promise is resolved it is going to consume the promise
+ */
+
+// async function natureOfAwait() {
+//     let promise1 = new Promise((resolve, reject) => {
+//         // setTimeout(resolve, 2000, "Promise 1 resolved");
+//         setTimeout(() => {
+//             resolve("Promise 1 Resolved");
+//         }, 2000);
+//     })
+//     let promise2 = new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             resolve("Promise 2 Resolved");
+//         }, 1000);
+//     })
+//     // promise1.then(res => console.log(res));
+//     // promise2.then(res => console.log(res));
+//     let promise1Res = await promise1;
+//     let promise2Res = await promise2;
+//     console.log(promise1Res);
+//     console.log(promise2Res);
+// }
+
+// console.clear();
+
+// natureOfAwait();
+
+function placeOrder() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve("Placed Succesfully");
+        }, 2000);
+    });
+}
+function checkingStock() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            reject("Stock is not available");
+        }, 1000)
     })
 }
 
-function deleteData(id) {
-    console.log(id)
-    let options = {
-        "method": "DELETE"
-    }
-    fetch(`https://branch-silver-narwhal.glitch.me/products/${id}`, options)
-        .then(res => {
-            if (res.ok) {
-                getData(); // mandatory
-                alert("Data Deleted");
-            }
-        })
-        .catch(err => console.error(err));
+function paymentRecieved() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve("Payment Success");
+        }, 2000);
+    });
 }
 
+function outOfDelivery() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve("Delivered Successfully");
+        }, 1000)
+    })
+}
+
+async function orderHere() {
+    try {
+        let placeOrderStatus = await placeOrder();
+        console.log(placeOrderStatus);
+
+        let checkingStockStatus = await checkingStock();
+        console.log(checkingStockStatus);
+
+        let paymentRecievedStatus = await paymentRecieved();
+        console.log(paymentRecievedStatus);
+
+        let outOfDeliveryStatus = await outOfDelivery();
+        console.log(outOfDeliveryStatus);
+
+    } catch (error) {
+        console.error(error);
+    }
+
+}
+orderHere();
+
+// placeOrder()
+//     .then(res => { console.log(res); return checkingStock(); })
+//     .then(res => { console.log(res); return paymentRecieved(); })
+//     .then(res => { console.log(res); return outOfDelivery(); })
+//     .then(res => { console.log(res); })
+//     .catch(err => console.error(err));
+
+
+/**
+ * Async -> ? 
+ *      returns a promise object , convert function into asynchornous
+ * 
+ * Await ->
+ *        converts async to sync
+ *        block untill a promise resolved or rejected
+ *        if promise is resolve it going consume   
+ *         if promise is rejected it throws an error message 
+ */
+
+// function getData() {
+//     fetch("http://localhost:5000/products")
+//         .then(res => res.json())
+//         .then(data => console.log(data))
+// }
+// getData();
+
+async function getData() {
+    try {
+        let response = await fetch("http://localhost:5000/products");
+        let data = await response.json();
+        console.log(data);
+    } catch (err) {
+        console.error(err);
+    }
+}
 getData();
 
 
