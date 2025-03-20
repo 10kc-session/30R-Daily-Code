@@ -6,32 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        div {
-            border: 1px solid #eee;
-            padding: 10px;
-            margin: 10px;
-        }
-
-        input,
-        button {
-            padding: 10px;
-        }
-
         body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            border: 1px solid #203040;
+            border-radius: 6px;
+            padding: 10px;
+            font-size: 2rem;
             text-align: center;
+            min-width: 600px;
+            min-height: 500px;
+        }
+
+        .container>img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: contain;
         }
     </style>
 </head>
 
 <body>
-    <form action="">
-        <input type="text" id="id" disabled placeholder="id">
-        <input type="text" id="title" placeholder="title">
-        <input type="text" id="price" placeholder="price">
-        <input type="text" id="description" placeholder="description">
-        <input type="reset">
-    </form>
-    <button id="btn">Save or Update</button>
+    <div class="container"></div>
     <script src="./index.js"></script>
 </body>
 
