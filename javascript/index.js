@@ -1,135 +1,149 @@
-// /**
-//  *  Error Handling and Rapid API (with PostMan)
-//  *  -------------------------------------------
-//  */
+// // // /**
+// // //  *  this keyword
+// // //  *  -------------
+// // //  *      this refers to current invoking object or current calling
+// // //  *      internally this keyword is a window object
+// // //  */
+// // // console.log(window);
+// // // console.log(this);
+
+// // // var a = 10;
+// // // console.log(window.a);
+// // // console.log(this.a);
+
+// // // var empName = "Gopal Krishna";
+
+// // // let obj = {
+// // //     "empName": "Gopal",
+// // //     "empSal": 50000,
+// // //     // obj (current)
+// // //     "greeting": function () {
+// // //         console.log(this == window); // false
+// // //         console.log(`Hi my name is ${this.empName}`);
+// // //     }
+// // // }
+// // // obj.greeting();
+
+// // // console.log(this == window); // true
+
+// // // // window
+// // // function x() {
+// // //     console.log(this);
+// // // }
+// // // x();
+// // // console.log(x);
+// // // console.log(window.x);
+
+// // let trainer = {
+// //     "name": "Hemanth",
+// //     "getBooks": function (noOfBooks, subject) {
+// //         console.log(`${this.name} has taken ${noOfBooks} ${subject} books`);
+// //     }
+// // }
+// // let student = {
+// //     "name": "Naresh"
+// // }
+
+// // let student1 = {
+// //     "name": "Prathibha"
+// // }
+
+// // // trainer.getBooks(10);
+// // // trainer.getBooks.call(student, 5, "Maths");
+// // // trainer.getBooks.call(student1, 15, "Maths");
+
+// // // trainer.getBooks.apply(student, [5, "Mathematics"]);
+// // // trainer.getBooks.apply({ "name": "Gopal" }, [10, "Science"]);
+
+
+// // // let res = trainer.getBooks.bind(student1);
+// // // console.log(res);
+// // // res(10, "Science");
+
+// // let obj = {
+// //     "name": "Javascript"
+// // };
+// // console.log(obj.toString());
+
+// // let arr = [1, 2, 3, 4, 5];
+// // console.log(arr);
+
+// // console.log(arr.toString());
 
 // // let a = 10;
-// // try {
-// //     a();
-// // } catch (err) {
-// //     console.error(err.message);
+// // console.log(a.toString());
+
+// // function x() {
+// //     console.log("Hello")
 // // }
-// // console.log("Hello World");
 
-// // let a = 10;
-// // let b = 0;
-
-// // try {
-// //     if (a == 0 || b == 0) {
-// //         throw "Zero Not Allowed";
-// //         console.log("Hello World"); // unreachable
+// // Array.prototype.findEven = function () {
+// //     let res = [];
+// //     for (let ele of this) {
+// //         if (ele % 2 == 0)
+// //             res.push(ele);
 // //     }
-// //     console.log(a / b);
-// // } catch (err) {
-// //     console.error(err);
+// //     return res;
 // // }
 
-// // let name = '';
-// // let pass = '';
-// // try {
-// //     if (name == '' || pass == '') {
-// //         throw new Error("Empty data is not allowed");
+// // Array.prototype.findOdd = function () {
+// //     let res = [];
+// //     for (let ele of this) {
+// //         if (ele % 2 != 0)
+// //             res.push(ele);
 // //     }
-// // } catch (err) {
-// //     console.error(err.message);
+// //     return res;
 // // }
 
 
-// async function getData() {
-//     try {
-//         let response = await fetch("https://jsonplaceholder.typicode.com/todos/");
-//         if (!response.ok) {
-//             throw new Error("HTTP Request Error  : ", response.status);
-//         }
-//         let result = await response.json()
-//         console.log(result);
-//     } catch (err) {
-//         console.error(err);
-//     }
-// }
-// // getData();
+// // let arr = [4, 7, 65, 5, 23, 34, 454, 675, 5, 3, 4, 62, 1];
+// // console.log(arr.findEven()); // [4,34,454,4,62]
+// // console.log(arr.findOdd());
 
-// const url = 'https://imdb236.p.rapidapi.com/imdb/india/top-rated-telugu-movies';
-// const options = {
-//     method: 'GET',
-//     headers: {
-//         'x-rapidapi-key': 'bc5555fe56msh26c6fab31eee891p134e18jsn11126a4834c4',
-//         'x-rapidapi-host': 'imdb236.p.rapidapi.com'
-//     }
-// };
-
-// async function getImdbData() {
-//     try {
-//         const response = await fetch(url, options);
-//         if (!response.ok) {
-//             throw new Error("Invalid or failed to fetch", response.status);
-//         }
-//         const result = await response.json();
-//         console.log(result);
-//     } catch (err) {
-//         console.error(err);
-//     }
-// }
-// getImdbData();
-
-// async function getWeather() {
-//     let city = window.prompt("Enter City Name");
-//     const url = `https://yahoo-weather5.p.rapidapi.com/weather?location=${city}&format=json&u=c`;
-//     const options = {
-//         method: 'GET',
-//         headers: {
-//             'x-rapidapi-key': 'bc5555fe56msh26c6fab31eee891p134e18jsn11126a4834c4',
-//             'x-rapidapi-host': 'yahoo-weather5.p.rapidapi.com'
-//         }
-//     };
-
-//     try {
-//         const response = await fetch(url, options);
-//         if (!response.ok) {
-//             throw new Error("HTTP Error : ", response.status, response.statusText);
-//         }
-//         const result = await response.json();
-//         displayData(result);
-//     } catch (error) {
-//         console.error(error);
-//     }
-// }
-// function displayData(obj) {
-//     console.log(obj)
-//     let container = document.querySelector(".container");
-//     container.innerHTML = `
-//         <p>CITY : ${obj.location.city} </p>
-//         <p>COUNTRY : ${obj.location.country} </p>
-//         <p>HUMIDITY : ${obj.current_observation.atmosphere.humidity}</p>
-//         <p>TEMPERATURE : ${obj.current_observation.condition.temperature}</p>
-//     `
+// Object.prototype.toStrings = function () {
+//     return "Hello From Main Object";
 // }
 
-async function getRandomUsers() {
-    let response = await fetch("https://randomuser.me/api/");
-    if (!response.ok) {
-        throw new Error("Something Went Worng");
+// Object.prototype.x = function () {
+//     return "Hey";
+// }
+
+// let obj = {};
+// console.log(obj.x);
+
+// let arr = [];
+
+// console.log(arr.x())
+// console.log(arr.toStrings()); // Array -> toStrings x -> Object -> v
+
+// let obj1 = {
+
+// }
+
+// let obj2 = {
+//     __proto__: obj1,
+// }
+
+// console.log(obj2.toStrings());
+
+Array.prototype.getPrimesWithoutDuplicates = function () {
+    let res = [];
+    for (let ele of this) {
+        let flag = true;
+        if (ele > 1) {
+            for (let i = 2; i * i <= ele; i++) {
+                if (ele % i == 0) {
+                    flag = false;
+                    break;
+                }
+            }
+        }
+        if (flag && ele > 1) {
+            res.push(ele);
+        }
     }
-    let user = await response.json();
-    displayData(user);
+    return Array.from(new Set(res));
 }
 
-function displayData(user) {
-    let obj = user.results[0];
-    let { title, first, last } = obj.name;
-    let { age, date } = obj.dob;
-    let container = document.querySelector(".container");
-    container.innerHTML = `
-        <img src = '${obj.picture.large}'>
-        <p>${title + " : " + first + " " + last} Gender : ${obj.gender}</p>
-        <p>Email : ${obj.email} Phno : ${obj.phone}</p>
-        <p>Age : ${age} , DOB : ${date}</p>
-    `;
-}
-
-
-window.addEventListener("DOMContentLoaded", function () {
-    setInterval(() => {
-        getRandomUsers();
-    }, 1000);
-})
+arr = [1, 3, 5, 7, 9, 13, 13, 7, 4, 5, 3, 21, 76, 1013];
+console.log(arr.getPrimesWithoutDuplicates());
