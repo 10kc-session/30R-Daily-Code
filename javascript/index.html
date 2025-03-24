@@ -5,14 +5,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .container>div {
+            border: 1px solid;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .container>div>img {
+            margin: 0 auto;
+            display: block;
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+        }
+
+        .btn-container {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .btn-container>button {
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
 </head>
 
 <body>
-    <form action="#">
-        <input type="text" id="name" placeholder="enter name">
-        <br>
-        <input type="submit" value="add data">
-    </form>
+    <div class="btn-container"></div>
     <div class="container"></div>
     <script src="./index.js"></script>
 </body>
