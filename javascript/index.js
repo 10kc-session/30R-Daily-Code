@@ -1,149 +1,73 @@
-// // // /**
-// // //  *  this keyword
-// // //  *  -------------
-// // //  *      this refers to current invoking object or current calling
-// // //  *      internally this keyword is a window object
-// // //  */
-// // // console.log(window);
-// // // console.log(this);
+/**
+ *    BOM (browser object modal)
+ *    ---------------------------
+ *      -> Bom is used to perform manipulations browser , it can access location , history.
+ *      we can create a new window using bom.
+ *      -> Bom is represented in form of window object
+ *          location object 
+ *          navigation object
+ *          screen object 
+ *          document object 
+ *      -> storages ->
+ *              localStorage   -> it will store the data inside browser even after closing the tab or browser
+ *                                  maximum 5mb to 10mb -> lifetime
+ *              sessionStorage -> it will store data for particular tab , 5mb -> data storage
+ *              cookie         -> lifetime , store the data -> 4kb
+ * 
+ *  we have to filter the data 
+ *      fakestore api 
+ *      
+ */
 
-// // // var a = 10;
-// // // console.log(window.a);
-// // // console.log(this.a);
+// localStorage.setItem("name", "rakesh");
+// localStorage.setItem("address", "hyderebad");
 
-// // // var empName = "Gopal Krishna";
+// let name = localStorage.getItem("name");
+// console.log(name);
 
-// // // let obj = {
-// // //     "empName": "Gopal",
-// // //     "empSal": 50000,
-// // //     // obj (current)
-// // //     "greeting": function () {
-// // //         console.log(this == window); // false
-// // //         console.log(`Hi my name is ${this.empName}`);
-// // //     }
-// // // }
-// // // obj.greeting();
+// let address = localStorage.getItem("address");
+// console.log(address);
 
-// // // console.log(this == window); // true
+// let arr = [1, 2, 3, 4, 5, 6]; // string -> converts non to string
 
-// // // // window
-// // // function x() {
-// // //     console.log(this);
-// // // }
-// // // x();
-// // // console.log(x);
-// // // console.log(window.x);
+// localStorage.setItem("values", JSON.stringify(arr));
 
-// // let trainer = {
-// //     "name": "Hemanth",
-// //     "getBooks": function (noOfBooks, subject) {
-// //         console.log(`${this.name} has taken ${noOfBooks} ${subject} books`);
-// //     }
-// // }
-// // let student = {
-// //     "name": "Naresh"
-// // }
+// let res = JSON.parse(localStorage.getItem("values")); // string to non primitive
 
-// // let student1 = {
-// //     "name": "Prathibha"
-// // }
+// console.log(res);
 
-// // // trainer.getBooks(10);
-// // // trainer.getBooks.call(student, 5, "Maths");
-// // // trainer.getBooks.call(student1, 15, "Maths");
+let form = document.querySelector("form");
+let input = document.getElementById("name");
 
-// // // trainer.getBooks.apply(student, [5, "Mathematics"]);
-// // // trainer.getBooks.apply({ "name": "Gopal" }, [10, "Science"]);
-
-
-// // // let res = trainer.getBooks.bind(student1);
-// // // console.log(res);
-// // // res(10, "Science");
-
-// // let obj = {
-// //     "name": "Javascript"
-// // };
-// // console.log(obj.toString());
-
-// // let arr = [1, 2, 3, 4, 5];
-// // console.log(arr);
-
-// // console.log(arr.toString());
-
-// // let a = 10;
-// // console.log(a.toString());
-
-// // function x() {
-// //     console.log("Hello")
-// // }
-
-// // Array.prototype.findEven = function () {
-// //     let res = [];
-// //     for (let ele of this) {
-// //         if (ele % 2 == 0)
-// //             res.push(ele);
-// //     }
-// //     return res;
-// // }
-
-// // Array.prototype.findOdd = function () {
-// //     let res = [];
-// //     for (let ele of this) {
-// //         if (ele % 2 != 0)
-// //             res.push(ele);
-// //     }
-// //     return res;
-// // }
-
-
-// // let arr = [4, 7, 65, 5, 23, 34, 454, 675, 5, 3, 4, 62, 1];
-// // console.log(arr.findEven()); // [4,34,454,4,62]
-// // console.log(arr.findOdd());
-
-// Object.prototype.toStrings = function () {
-//     return "Hello From Main Object";
-// }
-
-// Object.prototype.x = function () {
-//     return "Hey";
-// }
-
-// let obj = {};
-// console.log(obj.x);
-
-// let arr = [];
-
-// console.log(arr.x())
-// console.log(arr.toStrings()); // Array -> toStrings x -> Object -> v
-
-// let obj1 = {
-
-// }
-
-// let obj2 = {
-//     __proto__: obj1,
-// }
-
-// console.log(obj2.toStrings());
-
-Array.prototype.getPrimesWithoutDuplicates = function () {
-    let res = [];
-    for (let ele of this) {
-        let flag = true;
-        if (ele > 1) {
-            for (let i = 2; i * i <= ele; i++) {
-                if (ele % i == 0) {
-                    flag = false;
-                    break;
-                }
-            }
-        }
-        if (flag && ele > 1) {
-            res.push(ele);
-        }
+form.addEventListener("submit", function (event) {
+    if (input.value == '') {
+        event.preventDefault();
     }
-    return Array.from(new Set(res));
+    else {
+        //                    null || [] , ["rakesh"] || []
+        let arr = JSON.parse(localStorage.getItem("names")) || []; // ["Rakesh" , "Hemanth"]
+        arr.push(input.value); // ["Rakesh" , "Hemanth" , "Suraj"]
+        localStorage.setItem("names", JSON.stringify(arr));
+        displayData();
+    }
+})
+
+function displayData() {
+    let container = document.querySelector(".container");
+    container.innerHTML = ``;
+    let data = JSON.parse(localStorage.getItem("names"));
+    if (data == null) {
+        container.innerHTML = `No Data Available`;
+    } else {
+        data.forEach(ele => {
+            let p = document.createElement("p");
+            p.innerHTML = `Name : ${ele}`;
+            container.appendChild(p);
+        })
+    }
 }
 
-arr = [1, 3, 5, 7, 9, 13, 13, 7, 4, 5, 3, 21, 76, 1013];
-console.log(arr.getPrimesWithoutDuplicates());
+
+window.addEventListener("DOMContentLoaded", function () {
+    displayData();
+})
