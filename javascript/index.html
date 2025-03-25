@@ -6,42 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 10px;
-            padding: 10px;
-        }
-
-        .container>div {
-            border: 1px solid;
-            padding: 10px;
-            border-radius: 6px;
-        }
-
-        .container>div>img {
-            margin: 0 auto;
-            display: block;
-            width: 120px;
-            height: 120px;
-            object-fit: contain;
-        }
-
-        .btn-container {
-            padding: 10px;
-            text-align: center;
-        }
-
-        .btn-container>button {
-            padding: 10px;
+        button {
             margin: 5px;
+            padding: 10px;
         }
     </style>
 </head>
 
 <body>
-    <div class="btn-container"></div>
-    <div class="container"></div>
+    <button id="btn-1">open new window</button>
+    <button id="btn-2">close window</button>
+    <button id="btn-3">get confirmation</button>
+    <button id="btn-4">get alert</button>
+    <button id="btn-5">get prompt</button>
+    <button id="btn-6">start timer</button>
+    <button id="btn-7">stop timer</button>
+
+    <div class="output"></div>
     <script src="./index.js"></script>
 </body>
 

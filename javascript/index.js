@@ -1,66 +1,65 @@
-let container = document.getElementsByClassName("container")[0];
-let btnContainer = document.getElementsByClassName("btn-container")[0];
+/** 
+ *     BOM Methods in Javascript         
+ */
 
-async function getData() {
-    try {
-        let response = await fetch("https://fakestoreapi.com/products");
-        if (!response.ok) {
-            throw new Error("HTTP Errror : ", response.status);
-        }
-        let result = await response.json();
-        localStorage.setItem("products", JSON.stringify(result));
-        let products = JSON.parse(localStorage.getItem("products"));
-        displayData(products);
-    } catch (err) {
-        console.error(err);
+let openNewWindow = document.getElementById("btn-1");
+let closeWindow = document.getElementById("btn-2");
+let confirmBox = document.getElementById("btn-3");
+let alertBox = document.getElementById("btn-4");
+let promptBox = document.getElementById("btn-5");
+let startTimer = document.getElementById("btn-6");
+let stopTimer = document.getElementById("btn-7");
+let newWindow = null;
+
+openNewWindow.addEventListener("click", function () {
+    // newWindow = window.open("https://example.com/", "_blank", "height=400,width=400,top=200,left=200");
+    // setTimeout(() => {
+    //     newWindow.close();
+    // }, 2000)
+    newWindow = window.open("", "_blank", "height=400,width=400,top=200,left=200");
+    newWindow.document.writeln(`<h1>Hello World</h1>`);
+})
+
+closeWindow.addEventListener("click", function () {
+    newWindow.close();
+})
+
+confirmBox.addEventListener("click", function () {
+    let status = window.confirm("do you want close this window ?");
+    if (status) {
+        newWindow.close();
     }
-}
+})
 
-function displayData(products) {
-    container.innerHTML = ``;
-    if (products == null) {
-        container.innerHTML = `<h1>No Data Available</h1>`;
-    }
-    else {
-        products.forEach(obj => {
-            let { image, title, price, description, category } = obj;
-            let item = document.createElement("div");
-            item.id = "item";
-            item.innerHTML = `
-            <img src = '${image}'> 
-            <p>Title : ${title} , Price : ${price}</p>
-            <p>Description : ${description}</p>
-            <p><b>Category : ${category}</b></p>
-            `
-            container.appendChild(item);
-        });
-        displayButtons();
-    }
-}
-function displayButtons() {
-    btnContainer.innerHTML = ``;
-    let products = JSON.parse(localStorage.getItem("products"));
-    let allButton = document.createElement("button");
-    allButton.innerHTML = `All Data`;
-    allButton.addEventListener("click", function () {
-        displayData(products);
+promptBox.addEventListener("click", function () {
+    let data = +window.prompt("enter a number", "0");
+    console.log(data);
+})
 
-    })
-    btnContainer.appendChild(allButton);
-    let categoryArr = products.map(obj => obj.category);
-    Array.from(new Set(categoryArr)).forEach(ele => {
-        let button = document.createElement("button");
-        button.innerHTML = ele;
-        button.addEventListener("click", function () {
-            filterData(ele, products);
-        })
-        btnContainer.appendChild(button);
-    })
-}
+alertBox.addEventListener("click", function () {
+    window.alert("Something went wrong....");
+})
 
-function filterData(ele, products) {
-    let categoryArr = products.filter(obj => obj.category == ele);
-    displayData(categoryArr);
-}
+let interval = null;
 
-getData();
+startTimer.addEventListener("click", function () {
+    interval = window.setTimeout(() => {
+        alert("Hello World");
+    }, 5000);
+})
+
+stopTimer.addEventListener("click", function () {
+    window.clearTimeout(interval);
+})
+
+// startTimer.addEventListener("click", function () {
+//     let container = document.querySelector(".output");
+//     interval = window.setInterval(() => {
+//         let date = new Date();
+//         container.innerHTML = `${date.getSeconds()}`
+//     }, 1000);
+// })
+
+// stopTimer.addEventListener("click", function () {
+//     window.clearInterval(interval);
+// })
