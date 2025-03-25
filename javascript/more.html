@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .item img {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+            border-radius: 5px;
+        }
+
+        .item p {
+            font-size: 1.1em;
+            margin: 8px 0;
+        }
+
+        .back-button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="container"></div>
+    <button class="back-button" onclick="goBack()">Back to Products</button>
+    <script>
+        let urlSearchParams = new URLSearchParams(location.search);
+        let id = urlSearchParams.get("id");
+
+        let products = JSON.parse(localStorage.getItem("products")) || [];
+        let filterData = products.filter(obj => obj.id == id);
+
+        function displayData(products) {
+            let container = document.getElementById("container");
+            container.innerHTML = "";
+
+            products.forEach(({ id, title, brand, category, description, price, rating, images }) => {
+                let item = document.createElement("div");
+                item.className = "item";
+
+                item.innerHTML = `
+                    <img src='${images[0]}' alt='${title}'>
+                    <h2>${title}</h2>
+                    <p><strong>Price:</strong> $${price}</p>
+                    <p><strong>Brand:</strong> ${brand || "Not available"} | <strong>Rating:</strong> ${rating}</p>
+                    <p><strong>Category:</strong> ${category}</p>
+                    <p>${description}</p>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        function goBack() {
+            window.location.href = "./index.html";
+        }
+
+        displayData(filterData);
+    </script>
+</body>
+
+</html>

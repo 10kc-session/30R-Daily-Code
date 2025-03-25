@@ -1,65 +1,46 @@
-/** 
- *     BOM Methods in Javascript         
- */
+async function getData() {
+    try {
+        document.getElementById("loader").style.display = "flex";
+        document.getElementById("container").style.display = "none";
 
-let openNewWindow = document.getElementById("btn-1");
-let closeWindow = document.getElementById("btn-2");
-let confirmBox = document.getElementById("btn-3");
-let alertBox = document.getElementById("btn-4");
-let promptBox = document.getElementById("btn-5");
-let startTimer = document.getElementById("btn-6");
-let stopTimer = document.getElementById("btn-7");
-let newWindow = null;
+        let response = await fetch("https://dummyjson.com/products");
+        if (!response.ok) throw new Error("HTTP error: " + response.status);
+        let result = await response.json();
 
-openNewWindow.addEventListener("click", function () {
-    // newWindow = window.open("https://example.com/", "_blank", "height=400,width=400,top=200,left=200");
-    // setTimeout(() => {
-    //     newWindow.close();
-    // }, 2000)
-    newWindow = window.open("", "_blank", "height=400,width=400,top=200,left=200");
-    newWindow.document.writeln(`<h1>Hello World</h1>`);
-})
-
-closeWindow.addEventListener("click", function () {
-    newWindow.close();
-})
-
-confirmBox.addEventListener("click", function () {
-    let status = window.confirm("do you want close this window ?");
-    if (status) {
-        newWindow.close();
+        localStorage.setItem("products", JSON.stringify(result.products));
+        displayData(result.products);
+    } catch (err) {
+        console.error(err);
+        document.getElementById("loader").innerText = "Failed to load products.";
     }
-})
+}
 
-promptBox.addEventListener("click", function () {
-    let data = +window.prompt("enter a number", "0");
-    console.log(data);
-})
+function displayData(products) {
+    let container = document.getElementById("container");
+    container.innerHTML = "";
 
-alertBox.addEventListener("click", function () {
-    window.alert("Something went wrong....");
-})
+    products.forEach(({ id, title, brand, category, description, price, rating, images }) => {
+        let item = document.createElement("div");
+        item.className = "item";
 
-let interval = null;
+        item.innerHTML = `
+                    <img src='${images[0]}' alt='${title}'>
+                    <h3>${title}</h3>
+                    <p><strong>Price:</strong> $${price}</p>
+                    <p><strong>Brand:</strong> ${brand || "Not available"} | <strong>Rating:</strong> ${rating}</p>
+                    <p><strong>Category:</strong> ${category}</p>
+                    <p>${description.substring(0, 80)}...</p>
+                    <button onclick='getMoreData(${id})'>See More</button>
+                `;
+        container.appendChild(item);
+    });
 
-startTimer.addEventListener("click", function () {
-    interval = window.setTimeout(() => {
-        alert("Hello World");
-    }, 5000);
-})
+    document.getElementById("loader").style.display = "none";
+    document.getElementById("container").style.display = "grid";
+}
 
-stopTimer.addEventListener("click", function () {
-    window.clearTimeout(interval);
-})
+function getMoreData(id) {
+    window.location.href = `./more.html?id=${id}`;
+}
 
-// startTimer.addEventListener("click", function () {
-//     let container = document.querySelector(".output");
-//     interval = window.setInterval(() => {
-//         let date = new Date();
-//         container.innerHTML = `${date.getSeconds()}`
-//     }, 1000);
-// })
-
-// stopTimer.addEventListener("click", function () {
-//     window.clearInterval(interval);
-// })
+getData();
