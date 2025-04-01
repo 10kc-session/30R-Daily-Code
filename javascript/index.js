@@ -1,214 +1,247 @@
-// /**
-//  *  class is blueprint of an object
-//  *  class defines the creation of object
-//  *  class is a collection of properties and methods
-//  *  classes are introduced in Es6 (2015)
-//  *  classes are used to follow object oriented programming system.
-//  *  Syn :
-//  *          class ClassName{
-//  *                 properties and methods , constructor
-//  *           }
-//  *
-//  */
-
-// // class Car {
-// //     // properties
-// //     name;
-// //     brand;
-// //     color;
-// //     materials;
-// //     mileage;
-// //     fuelType;
-// //     // constructor is used to initilize the properties of an object
-// //     constructor(name, brand, color, materials, mileage, fuelType) {
-// //         console.log("Constructor Called...");
-// //         // this.name -> represent -> properties of object
-// //         // name -> represents parameter of a constructor
-// //         this.name = name;
-// //         this.brand = brand;
-// //         this.color = color;
-// //         this.materials = materials;
-// //         this.mileage = mileage;
-// //         this.fuelType = fuelType;
-// //     }
-// //     // Behaviour
-// //     start() {
-// //         console.log(`${this.name} has started engine`);
-// //     }
-
-// //     stop() {
-// //         console.log("car has been stopped");
-// //     }
-// // }
-
-// // let car = new Car("M5", "BMW", "Black", "High Quality", "7kmpl", "Diesel");
-// // console.log(car);
-// // car.start();
-
-
-// // variable refVar = new ClassName(arguments...);
-// // let car = new Car();
-// // car.brand = "BMW";
-// // car.color = "Black";
-// // car.fuelType = "Diesel";
-// // car.materials = "High Quality Materials";
-// // car.mileage = "7kmpl";
-// // car.name = "M5";
-
-// // console.log(car);
-// // car.start();
-// // car.stop();
-
-// // Parent
-// class Phone {
-//     buttons;
-//     screen;
-//     camera;
-//     color;
-//     speakers;
-
-//     constructor(buttons, screen, camera, color, speakers) {
-//         console.log("Parent Constructor")
-//         this.buttons = buttons;
-//         this.screen = screen;
-//         this.camera = camera;
-//         this.color = color;
-//         this.speakers = speakers;
-//     }
-
-//     calling() {
-//         console.log("Calling.....");
-//     }
-//     sendMessage() {
-//         console.log("Send Message...");
-//     }
+/**
+ *  Object Methods in Javascript
+ *  -----------------------------
+ *      the methods which are used to manipulate object
+ */
+// let obj = {
+//     "name": "Hemanth",
+//     "desg": "Trainer"
+// }
+// console.log(Object.keys(obj)); // keys present in obj which are enumurable
+// console.log(Object.values(obj)); // values present in obj
+// console.log(Object.entries(obj));
+// let arr = Object.entries(obj); // [ [ 'name', 'Hemanth' ], [ 'desg', 'Trainer' ] ]
+// for (let [key, value] of arr) {
+//     console.log(key, value);
 // }
 
-// // KeyPadPhone
-// class KeyPadPhone extends Phone {
-//     torchLight;
-//     constructor(buttons, screen, camera, color, speakers, torchLight) {
-//         super(buttons, screen, camera, color, speakers); // to invoke parent class constructor and assign properties
-//         console.log("Child Constructor")
-//         this.torchLight = torchLight;
-//     }
-//     calling() {
-//         super.calling(); // accessing methods of parent class from child class
-//         console.log("Keypad mobile is calling");
-//     }
-//     sendMessage() {
-//         console.log("Keypad mobile is sending message")
-//     }
+// how to make shallow copy of object
+// obj1 = obj2
+
+// how to make deep copy of an object
+// spread operator let obj = {...obj1}; // deep copy , {...obj1, ...obj2}
+
+// let obj1 = {
+//     "empName": "Jeevan",
+//     "empSalary": 50000
+// }
+// let obj2 = {
+//     "empDesg": "SD",
+//     "empSalary": 60000
 // }
 
-// // hiearacal inheritance
-// //  multi level
-// // -> grand -> parent -> child
+// Object.assign(obj1, obj2);
 
-// class SmarthPhone extends Phone {
-//     jack;
-//     wirelessCharging;
-//     wifi;
+// console.log(obj1);
 
-//     constructor(buttons, screen, camera, color, speakers, jack, wirelessCharging, wifi) {
-//         super(buttons, screen, camera, color, speakers);
-//         this.jack = jack;
-//         this.wirelessCharging = wirelessCharging;
-//         this.wifi = wifi;
-//     }
+// let newObj = Object.assign({}, obj1);
+// console.log(newObj);
 
-//     calling() {
-//         console.log("Smartphone calling");
-//     }
+// newObj.empName = "Jeevan Prakash";
 
-//     sendMessage() {
-//         console.log("Smarphone sending message");
-//     }
+// console.log(`New Object  : `, newObj);
+// console.log(`Old Object  : `, obj1);
 
-//     heyGoogle() {
-//         console.log("Hello...");
-//     }
+// let obj = {
+//     "name": "Hemanth",
+//     "desg": "Trainer"
 // }
 
-// let smarthPhone = new SmarthPhone("power and volume button", "amoled", "200mp", "white", "dual speaker", "3.5 mm", true, "wifi 6");
-// console.log(smarthPhone);
-// smarthPhone.calling();
-// smarthPhone.sendMessage();
-// smarthPhone.heyGoogle();
+// let newChild = Object.create(obj);
+// newChild.address = "Hyderabad";
+
+// console.log(newChild); // {}
+// console.log(newChild.name); // Hemanth -> inheritance
+// console.log(newChild.desg); // Trainer
+// console.log(newChild.address);
+
+// let obj = {
+//     "name": "Naresh",
+//     "desg": "Student",
+//     "address": {
+//         "city": "Hyderabad"
+//     }
+// }
+// Object.seal(obj); // we can only perform read and update
+// Object.seal(obj.address);//
 
 
-// // let keyPadPhone = new KeyPadPhone("4 buttons", "lcd", "no camera", "black", "single speaker", "single torch");
-// // console.log(keyPadPhone)
-// // keyPadPhone.sendMessage();
-// // keyPadPhone.calling();
+// // Nested
+// obj.address.state = "TG";
+// console.log(obj);
 
 
+// // Reading
+// console.log(obj.name);
+// console.log(obj.desg);
 
-class Human {
-    sleeping() {
-        console.log("Human is sleeping")
-    }
-    eating() {
-        console.log("Human is eating")
-    }
-    walking() {
-        console.log("Human is Walking")
-    }
-    listening() {
-        console.log("Human is listening")
-    }
+// obj.address = "Hyderabad"; // adding (not possible)
+
+// console.log(obj);
+
+
+// // updating
+// obj.name = "Naresh naik";
+// console.log(obj);
+
+// delete obj.name;
+// console.log(obj);
+
+// let obj = {
+//     "name": "Naresh",
+//     "desg": "Student",
+//     "address": {
+//         "city": "Hyderabad"
+//     }
+// }
+// Object.freeze(obj);
+
+// // reading
+// console.log(obj);
+
+// // updating
+// obj.name = "Naresh Naik";
+// console.log(obj);
+
+
+// // Deleting
+// delete obj.name;
+// console.log(obj);
+
+// delete obj.address.city
+// console.log(obj);
+
+// let obj = {
+//     "name": "Naresh",
+//     "desg": "Student"
+// }
+// Object.freeze(obj);
+// console.log(Object.getOwnPropertyDescriptors(obj));
+
+// console.log(Object.getOwnPropertyDescriptor(obj, "desg"));
+/**
+ * {
+  value: 'Naresh', -> returns the value of key
+  writable: true,  -> allows updation (true) , does not allow updation (false);
+  enumerable: true,  -> if true it shows the data , if false does not shows
+  configurable: true -> it true allows deletion and adding , if false does not allow deletion and adding
 }
-class Employee extends Human {
-    empName;
-    empDesg;
-    empSalary;
-    constructor(empDesg, empName, empSalary) {
-        super();
-        this.empName = empName;
-        this.empDesg = empDesg;
-        this.empSalary = empSalary;
-    }
-    working() {
-        console.log(`${this.empName} is working very hard`);
-    }
+ */
 
-    sleeping() {
-        console.log(`${this.empName} is sleeping in working hours`);
-    }
-    eating() {
-        console.log(`${this.empName} is eating`);
-    }
-    walking() {
-        console.log(`${this.empName} is walking around the office`);
-    }
-    listening() {
-        console.log(`${this.empName} is listening to our words`);
-    }
-}
+// Object.freeze(obj);
 
-class Manager extends Employee {
-    managerName;
+// console.log(Object.getOwnPropertyDescriptor(obj, "name"));
 
-    constructor(empName, empDesg, empSalary, managerName) {
-        super(empDesg, empName, empSalary)
-        this.managerName = managerName;
-    }
+// let obj = {};
 
-    hike(amount) {
-        this.empSalary += amount;
-        console.log(`${this.empName} salary is hiked by ${amount}`)
-    }
+// Object.defineProperty(obj, "name", {
+//     value: "Naresh",
+//     enumerable: true,
+//     writable: false,
+//     configurable: false
+// });
 
-    cutSalary(amount) {
-        this.empSalary -= amount;
-        console.log(`${this.empName} salary is deducted by ${amount}`)
-    }
-}
+// console.log(obj)
 
-let manager = new Manager("Uday", "Software Dev", 50000, "Rakesh");
-console.log(manager)
-manager.sleeping();
-manager.walking();
-manager.cutSalary(5000);
+// obj.name = "Naresh Naik";
 
-console.log(manager.empSalary);
+// console.log(obj)
+
+// let obj = {};
+
+// Object.defineProperties(obj, {
+//     "name": {
+//         value: "Naresh",
+//         enumerable: true,
+//         writable: false,
+//         configurable: false
+//     },
+//     "desg": {
+//         value: "Student",
+//         enumerable: false,
+//         writable: false,
+//         configurable: false
+//     }
+// })
+
+// console.log(obj);
+
+// delete obj.desg;
+// console.log(obj);
+
+// console.log(Object.keys(obj));
+// console.log(obj.desg);
+
+// Object.keys();
+// Object.values();
+// Object.entries();
+// Object.seal();
+// Object.freeze();
+// Object.create();
+// Object.assign();
+// Object.getOwnPropertyDescriptor();
+// Object.getOwnPropertyDescriptors();
+// Object.defineProperties();
+// Object.defineProperty();
+// Object.isFrozen();
+// Object.isSealed();
+// Object.fromEntries();
+
+
+
+/**
+ * String methods in Javascript
+ */
+// let str = "Hello World";
+// console.log(str[0]);
+// console.log(str.charAt(100));
+// console.log(str.at(100));
+// console.log(str.toLowerCase());
+// console.log(str.toUpperCase());
+// console.log(str.slice(0));
+// console.log(str.slice(0, 4)); // 0 - 3 -> excludes 4
+// console.log(str.slice(0, -3));
+// console.log(str.slice(-4, -1));
+// console.log(str.slice(-1, -5));
+// console.log(str.substring(-1, 5));
+// console.log(str.substr(0, 5));
+// console.log(str.substr(4, 13));
+// console.log(str.charCodeAt(0));
+// console.log(str.startsWith("World"));
+// console.log(str.endsWith("world"));
+// console.log(str.includes(" "));
+// console.log(str.includes(" Wo"));
+
+// let arr = ["a", "e", "i", "o", "u"];
+
+// let count = 0;
+// for (let char of str) {
+//     if (arr.includes(char.toLowerCase())) {
+//         count++;
+//     }
+// }
+// console.log(count);
+
+// console.log(str.indexOf("o", str.indexOf("o") + 1));
+// console.log(str.lastIndexOf("o", 15));
+
+// str = "   Hello World   ";
+
+// console.log(str.trimEnd());
+// console.log(str.trimStart());
+// console.log(str.trim());
+
+// str = "Hello";
+// console.log(str.padStart(str.length + 6, "-"));
+// console.log(str.padEnd(7, "***"));
+
+let str = "i am from tg and i know malayalam because of my madam"; // malayalam , madam
+// malayalam
+// ala
+// malayalam
+// layal
+// aya
+console.log(str.split(" "));
+
+console.log(str.replaceAll("i", "I"));
+console.log(str.repeat(3));
